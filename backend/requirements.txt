@@ -1,0 +1,19 @@
+# Dependências do backend ExportAI
+fastapi[standard]
+pandas
+pyarrow
+pycountry
+Babel
+python-dotenv
+pytest
+httpx
+SQLAlchemy
+ollama
+uvicorn
+pydantic
+beautifulsoup4
+pypdf
+alembic
+psycopg[binary]
+google-genai
+groq

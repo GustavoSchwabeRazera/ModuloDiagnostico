@@ -1,0 +1,71 @@
+{
+  "projeto": "ExportAI",
+  "modulo": "Diagnostico",
+  "sprint": 8,
+  "status": "PRONTO_PARA_HANDOFF_TECNICO",
+  "gerado_em_utc": "2026-09-11T01:41:08.975575+00:00",
+  "arquitetura": {
+    "api": "FastAPI",
+    "banco_producao": "PostgreSQL",
+    "migracoes": "Alembic",
+    "frontend": "Lovable",
+    "sessao": "anonima_com_token_hash",
+    "handoff": "codigo_descartavel_uso_unico",
+    "ia_primaria_planejada": "Gemini",
+    "ia_fallback_planejada": "Groq",
+    "ollama_producao": false
+  },
+  "migracao_head": "20260911_03",
+  "garantias": [
+    "IA não altera score, pesos ou criticidades",
+    "Falha da IA não impede o diagnóstico determinístico",
+    "Ausência de fontes não reduz score",
+    "Acesso ao Módulo Vendas não é bloqueado",
+    "Segredos não pertencem ao frontend"
+  ],
+  "pendencias_externas": [
+    "Provisionar PostgreSQL e serviço HTTPS",
+    "Definir domínio real do Lovable Diagnóstico",
+    "Configurar segredos no provedor",
+    "Validar modelos reais Gemini e Groq",
+    "Executar teste ponta a ponta publicado"
+  ],
+  "artefatos": [
+    {
+      "caminho": "Dockerfile",
+      "sha256": "188e3ca425a5558868b081ac426552e67a6450771be5c7ae3791f16a8c20f8e9"
+    },
+    {
+      "caminho": "start.sh",
+      "sha256": "17413737c8afbf9130ad86f8bf6419170c53915a11a4b29ee86e354e65fd656c"
+    },
+    {
+      "caminho": "requirements.txt",
+      "sha256": "7973c3d98b72b0ecaaf5082ebfc701e2834f594708a3260957053dbdfc3d6605"
+    },
+    {
+      "caminho": "alembic.ini",
+      "sha256": "33741f9043a728a6d0ce01ce09f1b8669b28e5b2a5f5fc5d5e141b1ee3c75abe"
+    },
+    {
+      "caminho": "docs/openapi-exportai.json",
+      "sha256": "f750a9e42acc5ad0912b579f9b84fff45ec1599a33d2b2e15602a8b2bbf331a8"
+    },
+    {
+      "caminho": "docs/DEPLOY_NUVEM.md",
+      "sha256": "277f4b45693f62f3e0dc17e6e555d3388bb076e552e6e1095c10f78ccefc0bf8"
+    },
+    {
+      "caminho": "docs/LOVABLE_DIAGNOSTICO_HANDOFF.md",
+      "sha256": "c8e25503a1e2c6c92e14adb5427686cde8fe754fe90143f8fc8faf3c1555fe35"
+    },
+    {
+      "caminho": "docs/TESTE_PONTA_A_PONTA.md",
+      "sha256": "9a54f6d3984988df5655302577294dba7aeb8fc1432be24eb5fe583c8ef7ff5f"
+    },
+    {
+      "caminho": "docs/CHECKLIST_ENTREGA_COLEGA.md",
+      "sha256": "350eac31b0b0dd3958f2bb14a898869b4b2e9f44c560c6afc50e73418929ca91"
+    }
+  ]
+}

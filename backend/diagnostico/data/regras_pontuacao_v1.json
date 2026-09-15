@@ -1,0 +1,57 @@
+{
+  "versao": "1.0.0",
+  "metodologia": "EXPORTAI_DIAGNOSTICO_V1",
+  "status_resposta": {
+    "CONCLUIDO": 1.0,
+    "EM_ANDAMENTO": 0.5,
+    "NAO_INICIADO": 0.0,
+    "NAO_SEI": 0.0,
+    "NAO_SE_APLICA": null
+  },
+  "pesos_criticidade": {
+    "BLOQUEADOR": 5,
+    "ESSENCIAL": 3,
+    "RECOMENDADO": 1
+  },
+  "faixas_prontidao": [
+    {
+      "nivel": "INICIAL",
+      "minimo": 0,
+      "maximo_exclusivo": 40
+    },
+    {
+      "nivel": "EM_PREPARACAO",
+      "minimo": 40,
+      "maximo_exclusivo": 65
+    },
+    {
+      "nivel": "QUASE_PRONTA",
+      "minimo": 65,
+      "maximo_exclusivo": 85
+    },
+    {
+      "nivel": "PRONTA_PARA_PROSPECTAR",
+      "minimo": 85,
+      "maximo_inclusivo": 100
+    }
+  ],
+  "regra_nao_se_aplica": "Excluir item do numerador e do denominador.",
+  "regra_bloqueador": "Item BLOQUEADOR diferente de CONCLUIDO gera alerta impeditivo, mas não bloqueia o acesso ao Módulo Vendas.",
+  "ordenacao_plano_acao": [
+    "BLOQUEADOR_NAO_INICIADO_OU_NAO_SEI",
+    "BLOQUEADOR_EM_ANDAMENTO",
+    "ESSENCIAL_NAO_INICIADO_OU_NAO_SEI",
+    "ESSENCIAL_EM_ANDAMENTO",
+    "RECOMENDADO",
+    "ORDEM_CATALOGO"
+  ],
+  "mercados_basico_minimo": 1,
+  "mercados_basico_maximo": 20,
+  "mercados_diagnostico_minimo": 1,
+  "mercados_diagnostico_maximo": 3,
+  "integracao_vendas": {
+    "dependencia_do_diagnostico": false,
+    "bloqueia_acesso": false,
+    "pode_exibir_alerta_resumido": true
+  }
+}

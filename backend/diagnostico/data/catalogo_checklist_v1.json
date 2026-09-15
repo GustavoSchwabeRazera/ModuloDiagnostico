@@ -1,0 +1,455 @@
+{
+  "versao": "1.0.0",
+  "dimensoes": [
+    "PRODUCAO_GESTAO",
+    "PRODUTO_CONFORMIDADE",
+    "EMBALAGEM_ROTULAGEM",
+    "PRECO_FINANCAS",
+    "OPERACAO_EXPORTADORA",
+    "MARKETING_COMERCIAL"
+  ],
+  "itens": [
+    {
+      "codigo": "PROD_CAPACIDADE_01",
+      "versao": "1.0.0",
+      "dimensao": "PRODUCAO_GESTAO",
+      "ordem": 1,
+      "pergunta": "A empresa possui capacidade produtiva para atender uma nova demanda?",
+      "explicacao": "Considere capacidade mensal, pedidos atuais, sazonalidade e possibilidade de ampliação.",
+      "criticidade": "BLOQUEADOR",
+      "peso": 5,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Validar a capacidade produtiva",
+        "descricao": "Registre a capacidade disponível e o volume que pode ser destinado à exportação.",
+        "prioridade": "ALTA"
+      }
+    },
+    {
+      "codigo": "PROD_REGULARIDADE_02",
+      "versao": "1.0.0",
+      "dimensao": "PRODUCAO_GESTAO",
+      "ordem": 2,
+      "pergunta": "A empresa consegue manter regularidade de fornecimento?",
+      "explicacao": "Considere matérias-primas, fornecedores, equipe e estabilidade do processo.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Planejar a regularidade de fornecimento",
+        "descricao": "Mapeie restrições de insumos, equipe e produção que possam afetar prazos.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "PROD_QUALIDADE_03",
+      "versao": "1.0.0",
+      "dimensao": "PRODUCAO_GESTAO",
+      "ordem": 3,
+      "pergunta": "Existe controle de qualidade documentado?",
+      "explicacao": "Considere inspeções, registros, critérios de aceite e tratamento de não conformidades.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Documentar o controle de qualidade",
+        "descricao": "Defina critérios, responsáveis e registros para controle de qualidade.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "PROD_RESPONSAVEL_04",
+      "versao": "1.0.0",
+      "dimensao": "PRODUCAO_GESTAO",
+      "ordem": 4,
+      "pergunta": "Há uma pessoa responsável pelo projeto de exportação?",
+      "explicacao": "A responsabilidade pode ser parcial, mas deve estar claramente atribuída.",
+      "criticidade": "RECOMENDADO",
+      "peso": 1,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Definir responsável pela exportação",
+        "descricao": "Indique quem acompanhará tarefas, prazos e contatos do projeto.",
+        "prioridade": "BAIXA"
+      }
+    },
+    {
+      "codigo": "CONF_NCM_01",
+      "versao": "1.0.0",
+      "dimensao": "PRODUTO_CONFORMIDADE",
+      "ordem": 1,
+      "pergunta": "A classificação NCM do produto foi validada?",
+      "explicacao": "A classificação deve corresponder às características e à composição do produto.",
+      "criticidade": "BLOQUEADOR",
+      "peso": 5,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Validar a classificação fiscal",
+        "descricao": "Confirme a NCM com documentação técnica e apoio especializado quando necessário.",
+        "prioridade": "ALTA"
+      }
+    },
+    {
+      "codigo": "CONF_FICHA_02",
+      "versao": "1.0.0",
+      "dimensao": "PRODUTO_CONFORMIDADE",
+      "ordem": 2,
+      "pergunta": "A empresa possui descrição técnica, composição e ficha do produto?",
+      "explicacao": "Inclua materiais, ingredientes, finalidade, medidas e características relevantes.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Preparar a ficha técnica",
+        "descricao": "Consolide as especificações e a composição do produto em documento controlado.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "CONF_NACIONAL_03",
+      "versao": "1.0.0",
+      "dimensao": "PRODUTO_CONFORMIDADE",
+      "ordem": 3,
+      "pergunta": "O produto atende às normas brasileiras aplicáveis?",
+      "explicacao": "Considere registros, licenças, laudos e normas setoriais no Brasil.",
+      "criticidade": "BLOQUEADOR",
+      "peso": 5,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Confirmar a conformidade nacional",
+        "descricao": "Liste e comprove as normas, registros ou autorizações aplicáveis no Brasil.",
+        "prioridade": "ALTA"
+      }
+    },
+    {
+      "codigo": "CONF_DESTINO_04",
+      "versao": "1.0.0",
+      "dimensao": "PRODUTO_CONFORMIDADE",
+      "ordem": 4,
+      "pergunta": "As certificações e exigências do país de destino foram verificadas?",
+      "explicacao": "Responda NAO_SEI se a pesquisa ainda não foi realizada.",
+      "criticidade": "BLOQUEADOR",
+      "peso": 5,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Pesquisar exigências do destino",
+        "descricao": "Verifique certificações, licenças, restrições e autoridades para cada país selecionado.",
+        "prioridade": "ALTA"
+      }
+    },
+    {
+      "codigo": "CONF_RASTREIO_05",
+      "versao": "1.0.0",
+      "dimensao": "PRODUTO_CONFORMIDADE",
+      "ordem": 5,
+      "pergunta": "O produto e seus insumos possuem rastreabilidade quando aplicável?",
+      "explicacao": "Considere lote, origem dos insumos, produção, validade e registros de movimentação.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Estruturar a rastreabilidade",
+        "descricao": "Defina como identificar lotes, insumos e registros de produção.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "EMB_RESISTENCIA_01",
+      "versao": "1.0.0",
+      "dimensao": "EMBALAGEM_ROTULAGEM",
+      "ordem": 1,
+      "pergunta": "A embalagem está preparada para transporte internacional?",
+      "explicacao": "Considere resistência, umidade, temperatura, empilhamento, manuseio e avarias.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Adequar a embalagem de transporte",
+        "descricao": "Teste e documente a embalagem para as condições previstas de transporte.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "EMB_MEDIDAS_02",
+      "versao": "1.0.0",
+      "dimensao": "EMBALAGEM_ROTULAGEM",
+      "ordem": 2,
+      "pergunta": "Peso e dimensões das embalagens estão registrados?",
+      "explicacao": "Registre embalagem unitária, caixa, palete e demais unidades logísticas aplicáveis.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Registrar pesos e dimensões",
+        "descricao": "Consolide as medidas e pesos usados nas cotações e documentos logísticos.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "ROT_ADAPTACAO_03",
+      "versao": "1.0.0",
+      "dimensao": "EMBALAGEM_ROTULAGEM",
+      "ordem": 3,
+      "pergunta": "O rótulo pode ser adaptado às regras e ao idioma do destino?",
+      "explicacao": "Considere idioma, unidades, advertências, origem, lote, validade e símbolos obrigatórios.",
+      "criticidade": "BLOQUEADOR",
+      "peso": 5,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Adaptar o rótulo",
+        "descricao": "Prepare uma versão do rótulo aderente às regras de cada mercado selecionado.",
+        "prioridade": "ALTA"
+      }
+    },
+    {
+      "codigo": "EMB_CODIGOS_04",
+      "versao": "1.0.0",
+      "dimensao": "EMBALAGEM_ROTULAGEM",
+      "ordem": 4,
+      "pergunta": "Códigos, lote, validade e origem estão disponíveis quando aplicáveis?",
+      "explicacao": "Marque NAO_SE_APLICA somente quando houver justificativa.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Completar a identificação do produto",
+        "descricao": "Inclua os identificadores exigidos para rastreabilidade e comercialização.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "PRECO_INCOTERM_01",
+      "versao": "1.0.0",
+      "dimensao": "PRECO_FINANCAS",
+      "ordem": 1,
+      "pergunta": "A empresa calculou um preço internacional FOB ou FCA?",
+      "explicacao": "Inclua custos até o ponto de entrega previsto no Incoterm escolhido.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Calcular o preço internacional",
+        "descricao": "Estruture uma planilha de preço FOB ou FCA com custos e margem.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "PRECO_CUSTOS_02",
+      "versao": "1.0.0",
+      "dimensao": "PRECO_FINANCAS",
+      "ordem": 2,
+      "pergunta": "Foram considerados os custos adicionais da exportação?",
+      "explicacao": "Considere embalagem, documentação, transporte interno, despacho, comissões e tributos aplicáveis.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Mapear os custos da exportação",
+        "descricao": "Liste e estime todos os custos adicionais da operação.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "PRECO_MARGEM_03",
+      "versao": "1.0.0",
+      "dimensao": "PRECO_FINANCAS",
+      "ordem": 3,
+      "pergunta": "A empresa definiu margem mínima e moeda da proposta?",
+      "explicacao": "Considere também variação cambial e validade da cotação.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Definir margem, moeda e validade",
+        "descricao": "Aprove parâmetros comerciais para as propostas internacionais.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "FIN_CAPITAL_04",
+      "versao": "1.0.0",
+      "dimensao": "PRECO_FINANCAS",
+      "ordem": 4,
+      "pergunta": "Há capital de giro para o ciclo de exportação?",
+      "explicacao": "Considere produção, armazenagem, transporte e prazo de recebimento.",
+      "criticidade": "BLOQUEADOR",
+      "peso": 5,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Avaliar o capital de giro",
+        "descricao": "Projete o caixa necessário até o recebimento da exportação.",
+        "prioridade": "ALTA"
+      }
+    },
+    {
+      "codigo": "FIN_PAGAMENTO_05",
+      "versao": "1.0.0",
+      "dimensao": "PRECO_FINANCAS",
+      "ordem": 5,
+      "pergunta": "As condições e os meios de pagamento foram avaliados?",
+      "explicacao": "Considere risco do comprador, prazo, custos bancários e garantias.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Definir condições de pagamento",
+        "descricao": "Escolha meios de pagamento compatíveis com risco e fluxo de caixa.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "OPER_HABILITACAO_01",
+      "versao": "1.0.0",
+      "dimensao": "OPERACAO_EXPORTADORA",
+      "ordem": 1,
+      "pergunta": "A situação de habilitação para operar no comércio exterior foi verificada?",
+      "explicacao": "Confirme o enquadramento aplicável à empresa antes da operação.",
+      "criticidade": "BLOQUEADOR",
+      "peso": 5,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Verificar a habilitação operacional",
+        "descricao": "Consulte a situação da empresa e providencie os ajustes necessários.",
+        "prioridade": "ALTA"
+      }
+    },
+    {
+      "codigo": "OPER_DOCUMENTOS_02",
+      "versao": "1.0.0",
+      "dimensao": "OPERACAO_EXPORTADORA",
+      "ordem": 2,
+      "pergunta": "A empresa conhece os documentos comerciais, fiscais e aduaneiros da operação?",
+      "explicacao": "Considere nota fiscal, fatura, packing list, DU-E e documentos específicos.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Mapear os documentos da operação",
+        "descricao": "Crie um roteiro documental para a primeira exportação.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "OPER_LOGISTICA_03",
+      "versao": "1.0.0",
+      "dimensao": "OPERACAO_EXPORTADORA",
+      "ordem": 3,
+      "pergunta": "O modal e o operador logístico foram identificados e cotados?",
+      "explicacao": "Considere prazo, custo, frequência, limites, coleta e entrega.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Definir a solução logística",
+        "descricao": "Compare opções e registre uma cotação aderente ao produto e ao mercado.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "OPER_SEGURO_04",
+      "versao": "1.0.0",
+      "dimensao": "OPERACAO_EXPORTADORA",
+      "ordem": 4,
+      "pergunta": "A necessidade de seguro de transporte foi avaliada?",
+      "explicacao": "A contratação pode depender do Incoterm, do risco e do valor da carga.",
+      "criticidade": "RECOMENDADO",
+      "peso": 1,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Avaliar o seguro",
+        "descricao": "Verifique responsabilidade, cobertura e custo para a operação planejada.",
+        "prioridade": "BAIXA"
+      }
+    },
+    {
+      "codigo": "MKT_APRESENTACAO_01",
+      "versao": "1.0.0",
+      "dimensao": "MARKETING_COMERCIAL",
+      "ordem": 1,
+      "pergunta": "Existe apresentação institucional em inglês ou no idioma do destino?",
+      "explicacao": "O material deve apresentar empresa, diferenciais, capacidade e contatos.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Preparar a apresentação internacional",
+        "descricao": "Crie ou adapte o material institucional para compradores estrangeiros.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "MKT_CATALOGO_02",
+      "versao": "1.0.0",
+      "dimensao": "MARKETING_COMERCIAL",
+      "ordem": 2,
+      "pergunta": "Existe catálogo internacional com informações técnicas do produto?",
+      "explicacao": "Inclua fotos, especificações, embalagem, unidades, capacidade e contato.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Criar o catálogo internacional",
+        "descricao": "Prepare catálogo comercial com informações técnicas verificadas.",
+        "prioridade": "MEDIA"
+      }
+    },
+    {
+      "codigo": "MKT_SITE_03",
+      "versao": "1.0.0",
+      "dimensao": "MARKETING_COMERCIAL",
+      "ordem": 3,
+      "pergunta": "O site ou canal digital está preparado para público estrangeiro?",
+      "explicacao": "Considere idioma, contato, responsividade, credibilidade e atualização.",
+      "criticidade": "RECOMENDADO",
+      "peso": 1,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Adaptar a presença digital",
+        "descricao": "Disponibilize informações essenciais e um canal de contato internacional.",
+        "prioridade": "BAIXA"
+      }
+    },
+    {
+      "codigo": "MKT_ATENDIMENTO_04",
+      "versao": "1.0.0",
+      "dimensao": "MARKETING_COMERCIAL",
+      "ordem": 4,
+      "pergunta": "A empresa consegue responder a contatos internacionais em prazo adequado?",
+      "explicacao": "Defina idioma, responsável, prazo de resposta e registro das oportunidades.",
+      "criticidade": "ESSENCIAL",
+      "peso": 3,
+      "aplicabilidade": "GERAL",
+      "ativo": true,
+      "acao_quando_pendente": {
+        "titulo": "Organizar o atendimento internacional",
+        "descricao": "Defina fluxo, responsável e prazo para responder compradores.",
+        "prioridade": "MEDIA"
+      }
+    }
+  ]
+}

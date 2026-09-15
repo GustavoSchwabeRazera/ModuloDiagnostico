@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: exportai-api
+    runtime: docker
+    plan: free
+    region: virginia
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: EXPORTAI_AMBIENTE
+        value: PRODUCAO
+      - key: EXPORTAI_DATABASE_URL
+        fromDatabase:
+          name: exportai-postgres
+          property: connectionString
+      - key: EXPORTAI_CORS_ORIGINS
+        sync: false
+      - key: EXPORTAI_HANDOFF_DESTINOS
+        sync: false
+      - key: EXPORTAI_HANDOFF_SECRET
+        generateValue: true
+      - key: EXPORTAI_HANDOFF_TTL_SEGUNDOS
+        value: "120"
+      - key: EXPORTAI_SESSAO_RETENCAO_HORAS
+        value: "24"
+      - key: EXPORTAI_DIAGNOSTICO_IA_PROVEDOR
+        value: DESATIVADO
+      - key: EXPORTAI_DIAGNOSTICO_BUSCA_PROVEDOR
+        value: DESATIVADO
+      - key: EXPORTAI_DIAGNOSTICO_PESQUISA_AUTOMATICA_HABILITADA
+        value: "false"
+
+databases:
+  - name: exportai-postgres
+    plan: free
+    region: virginia
+    databaseName: exportai
+    user: exportai

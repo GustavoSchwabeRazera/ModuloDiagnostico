@@ -1,0 +1,3594 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ExportAI API",
+    "description": "API do ExportAI para recomendacao personalizada de mercados internacionais por NCM ou HS6.",
+    "version": "0.2.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "Saude"
+        ],
+        "summary": "Verifica a saude da API",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Health Health Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/paises": {
+      "get": {
+        "tags": [
+          "Catalogos"
+        ],
+        "summary": "Lista paises disponiveis",
+        "description": "Retorna os paises do motor com ISO3 e nome em portugues.",
+        "operationId": "listar_paises_api_v1_paises_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListaPaisesResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Falha ao ler os catalogos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ncm/{ncm}": {
+      "get": {
+        "tags": [
+          "Catalogos"
+        ],
+        "summary": "Valida e descreve uma NCM",
+        "operationId": "consultar_ncm_api_v1_ncm__ncm__get",
+        "parameters": [
+          {
+            "name": "ncm",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "NCM com 8 digitos, com ou sem pontuacao.",
+              "title": "Ncm"
+            },
+            "description": "NCM com 8 digitos, com ou sem pontuacao."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NCMInfoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Codigo com formato invalido.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Codigo nao encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Falha ao ler os catalogos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/hs6/{hs6}": {
+      "get": {
+        "tags": [
+          "Catalogos"
+        ],
+        "summary": "Consulta a cobertura de um HS6",
+        "operationId": "consultar_hs6_api_v1_hs6__hs6__get",
+        "parameters": [
+          {
+            "name": "hs6",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "HS6 com exatamente 6 digitos.",
+              "title": "Hs6"
+            },
+            "description": "HS6 com exatamente 6 digitos."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HS6InfoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Codigo com formato invalido.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Codigo nao encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Falha ao ler os catalogos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/diagnosticos/complementar/saude": {
+      "get": {
+        "tags": [
+          "Diagn�stico"
+        ],
+        "summary": "Verifica a sa�de da camada complementar",
+        "operationId": "saude_camadas_complementares_api_v1_diagnosticos_complementar_saude_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaudeComplementar"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/diagnosticos/checklist": {
+      "get": {
+        "tags": [
+          "Diagn�stico"
+        ],
+        "summary": "Consulta o checklist do M�dulo Diagn�stico",
+        "operationId": "consultar_checklist_api_v1_diagnosticos_checklist_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogoChecklist"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/diagnosticos": {
+      "post": {
+        "tags": [
+          "Diagn�stico"
+        ],
+        "summary": "Cria uma sess�o de diagn�stico",
+        "operationId": "criar_diagnostico_api_v1_diagnosticos_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarDiagnosticoRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessaoCriadaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/diagnosticos/{diagnostico_id}": {
+      "get": {
+        "tags": [
+          "Diagn�stico"
+        ],
+        "summary": "Consulta uma sess�o de diagn�stico",
+        "operationId": "consultar_diagnostico_api_v1_diagnosticos__diagnostico_id__get",
+        "parameters": [
+          {
+            "name": "diagnostico_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Diagnostico Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessaoDiagnosticoResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/diagnosticos/{diagnostico_id}/mercados": {
+      "put": {
+        "tags": [
+          "Diagn�stico"
+        ],
+        "summary": "Atualiza os pa�ses escolhidos",
+        "operationId": "atualizar_mercados_api_v1_diagnosticos__diagnostico_id__mercados_put",
+        "parameters": [
+          {
+            "name": "diagnostico_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Diagnostico Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AtualizarMercadosRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MercadosAtualizadosResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/diagnosticos/{diagnostico_id}/respostas": {
+      "put": {
+        "tags": [
+          "Diagn�stico"
+        ],
+        "summary": "Registra respostas parciais ou completas",
+        "operationId": "registrar_respostas_api_v1_diagnosticos__diagnostico_id__respostas_put",
+        "parameters": [
+          {
+            "name": "diagnostico_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Diagnostico Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarRespostasRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RespostasRegistradasResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/diagnosticos/{diagnostico_id}/calcular": {
+      "post": {
+        "tags": [
+          "Diagn�stico"
+        ],
+        "summary": "Calcula o resultado do diagn�stico",
+        "operationId": "calcular_diagnostico_api_v1_diagnosticos__diagnostico_id__calcular_post",
+        "parameters": [
+          {
+            "name": "diagnostico_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Diagnostico Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultadoDiagnostico"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/diagnosticos/{diagnostico_id}/resultado": {
+      "get": {
+        "tags": [
+          "Diagn�stico"
+        ],
+        "summary": "Consulta o �ltimo resultado calculado",
+        "operationId": "consultar_resultado_api_v1_diagnosticos__diagnostico_id__resultado_get",
+        "parameters": [
+          {
+            "name": "diagnostico_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Diagnostico Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultadoDiagnostico"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/diagnosticos/{diagnostico_id}/pesquisa-assistida": {
+      "post": {
+        "tags": [
+          "Diagn�stico"
+        ],
+        "summary": "Executa a interpreta��o complementar por pa�s",
+        "operationId": "executar_pesquisa_assistida_api_v1_diagnosticos__diagnostico_id__pesquisa_assistida_post",
+        "parameters": [
+          {
+            "name": "diagnostico_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Diagnostico Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExecutarPesquisaAssistidaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultadoPesquisaAssistida"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Diagn�stico"
+        ],
+        "summary": "Consulta a �ltima pesquisa assistida",
+        "operationId": "consultar_pesquisa_assistida_api_v1_diagnosticos__diagnostico_id__pesquisa_assistida_get",
+        "parameters": [
+          {
+            "name": "diagnostico_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Diagnostico Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultadoPesquisaAssistida"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/diagnosticos/{diagnostico_id}/pesquisa-assistida/automatica": {
+      "post": {
+        "tags": [
+          "Diagn�stico"
+        ],
+        "summary": "Busca fontes autorizadas e executa interpreta��o complementar",
+        "operationId": "executar_pesquisa_assistida_automatica_api_v1_diagnosticos__diagnostico_id__pesquisa_assistida_automatica_post",
+        "parameters": [
+          {
+            "name": "diagnostico_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Diagnostico Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExecutarPesquisaAutomaticaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultadoPesquisaAutomatica"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/recomendacoes": {
+      "post": {
+        "tags": [
+          "Recomendacoes"
+        ],
+        "summary": "Recomenda mercados internacionais",
+        "operationId": "recomendar_mercados_api_v1_recomendacoes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsultaRecomendacaoRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsultaRecomendacaoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Codigo ou parametro invalido.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NCM, HS6 ou mercados nao encontrados.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Requisicao fora do contrato.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Falha na base do ExportAI.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/jornadas": {
+      "post": {
+        "tags": [
+          "Jornadas an�nimas"
+        ],
+        "summary": "Criar Jornada",
+        "operationId": "criar_jornada_api_v1_jornadas_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarJornadaRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CriarJornadaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/jornadas/{journey_id}": {
+      "get": {
+        "tags": [
+          "Jornadas an�nimas"
+        ],
+        "summary": "Obter Jornada",
+        "operationId": "obter_jornada_api_v1_jornadas__journey_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "journey_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Journey Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JornadaPublica"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/jornadas/{journey_id}/mercados": {
+      "put": {
+        "tags": [
+          "Jornadas an�nimas"
+        ],
+        "summary": "Selecionar Mercados",
+        "operationId": "selecionar_mercados_api_v1_jornadas__journey_id__mercados_put",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "journey_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Journey Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SelecionarMercadosRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JornadaPublica"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/jornadas/{journey_id}/diagnostico-payload": {
+      "get": {
+        "tags": [
+          "Jornadas an�nimas"
+        ],
+        "summary": "Preparar Diagnostico",
+        "operationId": "preparar_diagnostico_api_v1_jornadas__journey_id__diagnostico_payload_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "journey_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Journey Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrepararDiagnosticoResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/jornadas/{journey_id}/diagnostico": {
+      "put": {
+        "tags": [
+          "Jornadas an�nimas"
+        ],
+        "summary": "Associar Diagnostico",
+        "operationId": "associar_diagnostico_api_v1_jornadas__journey_id__diagnostico_put",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "journey_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Journey Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssociarDiagnosticoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JornadaPublica"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/jornadas/{journey_id}/handoff": {
+      "post": {
+        "tags": [
+          "Jornadas an�nimas"
+        ],
+        "summary": "Criar Handoff",
+        "operationId": "criar_handoff_api_v1_jornadas__journey_id__handoff_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "journey_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Journey Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarHandoffRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/jornadas/handoff/trocar": {
+      "post": {
+        "tags": [
+          "Jornadas an�nimas"
+        ],
+        "summary": "Trocar Handoff",
+        "operationId": "trocar_handoff_api_v1_jornadas_handoff_trocar_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrocarHandoffRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "Raiz"
+        ],
+        "summary": "Apresenta a API",
+        "operationId": "raiz__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AcaoPendente": {
+        "properties": {
+          "titulo": {
+            "type": "string",
+            "maxLength": 300,
+            "minLength": 3,
+            "title": "Titulo"
+          },
+          "descricao": {
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 3,
+            "title": "Descricao"
+          },
+          "prioridade": {
+            "type": "string",
+            "enum": [
+              "ALTA",
+              "MEDIA",
+              "BAIXA"
+            ],
+            "title": "Prioridade"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "titulo",
+          "descricao",
+          "prioridade"
+        ],
+        "title": "AcaoPendente"
+      },
+      "AcaoPlano": {
+        "properties": {
+          "ordem": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Ordem"
+          },
+          "item_codigo": {
+            "type": "string",
+            "title": "Item Codigo"
+          },
+          "dimensao": {
+            "type": "string",
+            "title": "Dimensao"
+          },
+          "criticidade": {
+            "type": "string",
+            "enum": [
+              "BLOQUEADOR",
+              "ESSENCIAL",
+              "RECOMENDADO"
+            ],
+            "title": "Criticidade"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CONCLUIDO",
+              "EM_ANDAMENTO",
+              "NAO_INICIADO",
+              "NAO_SEI",
+              "NAO_SE_APLICA"
+            ],
+            "title": "Status"
+          },
+          "titulo": {
+            "type": "string",
+            "title": "Titulo"
+          },
+          "descricao": {
+            "type": "string",
+            "title": "Descricao"
+          },
+          "prioridade": {
+            "type": "string",
+            "enum": [
+              "ALTA",
+              "MEDIA",
+              "BAIXA"
+            ],
+            "title": "Prioridade"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ordem",
+          "item_codigo",
+          "dimensao",
+          "criticidade",
+          "status",
+          "titulo",
+          "descricao",
+          "prioridade"
+        ],
+        "title": "AcaoPlano"
+      },
+      "AssociarDiagnosticoRequest": {
+        "properties": {
+          "diagnostico_id": {
+            "type": "string",
+            "maxLength": 36,
+            "minLength": 36,
+            "title": "Diagnostico Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "diagnostico_id"
+        ],
+        "title": "AssociarDiagnosticoRequest"
+      },
+      "AtualizarMercadosRequest": {
+        "properties": {
+          "mercados_escolhidos": {
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "Mercados Escolhidos"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mercados_escolhidos"
+        ],
+        "title": "AtualizarMercadosRequest"
+      },
+      "BloqueadorDiagnostico": {
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "title": "Codigo"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CONCLUIDO",
+              "EM_ANDAMENTO",
+              "NAO_INICIADO",
+              "NAO_SEI",
+              "NAO_SE_APLICA"
+            ],
+            "title": "Status"
+          },
+          "mensagem": {
+            "type": "string",
+            "title": "Mensagem"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "codigo",
+          "status",
+          "mensagem"
+        ],
+        "title": "BloqueadorDiagnostico"
+      },
+      "CatalogoChecklist": {
+        "properties": {
+          "versao": {
+            "type": "string",
+            "title": "Versao"
+          },
+          "dimensoes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Dimensoes"
+          },
+          "itens": {
+            "items": {
+              "$ref": "#/components/schemas/ItemChecklist"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Itens"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "versao",
+          "dimensoes",
+          "itens"
+        ],
+        "title": "CatalogoChecklist"
+      },
+      "CoberturaInfo": {
+        "properties": {
+          "paises_avaliados_inicialmente": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Paises Avaliados Inicialmente"
+          },
+          "paises_apos_exclusoes": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Paises Apos Exclusoes"
+          },
+          "paises_apos_todos_filtros": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Paises Apos Todos Filtros"
+          },
+          "recomendacoes_retornadas": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Recomendacoes Retornadas"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "paises_avaliados_inicialmente",
+          "paises_apos_exclusoes",
+          "paises_apos_todos_filtros",
+          "recomendacoes_retornadas"
+        ],
+        "title": "CoberturaInfo"
+      },
+      "ComponenteSaude": {
+        "properties": {
+          "nome": {
+            "type": "string",
+            "title": "Nome"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "OK",
+              "DESATIVADO",
+              "ERRO",
+              "NAO_CONFIGURADO"
+            ],
+            "title": "Status"
+          },
+          "detalhe": {
+            "type": "string",
+            "title": "Detalhe"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "nome",
+          "status",
+          "detalhe"
+        ],
+        "title": "ComponenteSaude"
+      },
+      "ConsultaInfo": {
+        "properties": {
+          "ncm": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{8}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ncm"
+          },
+          "descricao_ncm": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Descricao Ncm"
+          },
+          "hs6": {
+            "type": "string",
+            "pattern": "^\\d{6}$",
+            "title": "Hs6"
+          },
+          "quantidade_solicitada": {
+            "type": "integer",
+            "maximum": 258.0,
+            "minimum": 1.0,
+            "title": "Quantidade Solicitada"
+          },
+          "confianca_minima": {
+            "type": "string",
+            "enum": [
+              "LIMITADA",
+              "MODERADA",
+              "ALTA"
+            ],
+            "title": "Confianca Minima"
+          },
+          "somente_novas": {
+            "type": "boolean",
+            "title": "Somente Novas"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "hs6",
+          "quantidade_solicitada",
+          "confianca_minima",
+          "somente_novas"
+        ],
+        "title": "ConsultaInfo"
+      },
+      "ConsultaRecomendacaoRequest": {
+        "properties": {
+          "ncm": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{8}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ncm",
+            "description": "NCM brasileira com 8 digitos."
+          },
+          "hs6": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{6}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hs6",
+            "description": "HS6 com 6 digitos. Use somente se ncm estiver ausente."
+          },
+          "paises_ja_exportados": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 258,
+            "title": "Paises Ja Exportados"
+          },
+          "quantidade": {
+            "type": "integer",
+            "maximum": 258.0,
+            "minimum": 1.0,
+            "title": "Quantidade",
+            "default": 5
+          },
+          "confianca_minima": {
+            "type": "string",
+            "enum": [
+              "LIMITADA",
+              "MODERADA",
+              "ALTA"
+            ],
+            "title": "Confianca Minima",
+            "default": "LIMITADA"
+          },
+          "somente_novas": {
+            "type": "boolean",
+            "title": "Somente Novas",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "ConsultaRecomendacaoRequest",
+        "examples": [
+          {
+            "confianca_minima": "LIMITADA",
+            "ncm": "09011110",
+            "paises_ja_exportados": [
+              "Argentina",
+              "Estados Unidos",
+              "Chile"
+            ],
+            "quantidade": 5,
+            "somente_novas": false
+          }
+        ]
+      },
+      "ConsultaRecomendacaoResponse": {
+        "properties": {
+          "consulta": {
+            "$ref": "#/components/schemas/ConsultaInfo"
+          },
+          "exclusoes": {
+            "$ref": "#/components/schemas/ExclusoesInfo"
+          },
+          "cobertura": {
+            "$ref": "#/components/schemas/CoberturaInfo"
+          },
+          "metodologia": {
+            "$ref": "#/components/schemas/MetodologiaInfo"
+          },
+          "recomendacoes": {
+            "items": {
+              "$ref": "#/components/schemas/RecomendacaoPais"
+            },
+            "type": "array",
+            "title": "Recomendacoes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "consulta",
+          "exclusoes",
+          "cobertura",
+          "metodologia",
+          "recomendacoes"
+        ],
+        "title": "ConsultaRecomendacaoResponse",
+        "examples": [
+          {
+            "cobertura": {
+              "paises_apos_exclusoes": 231,
+              "paises_apos_todos_filtros": 231,
+              "paises_avaliados_inicialmente": 232,
+              "recomendacoes_retornadas": 1
+            },
+            "consulta": {
+              "confianca_minima": "LIMITADA",
+              "descricao_ncm": "Cafe nao torrado, nao descafeinado, em grao",
+              "hs6": "090111",
+              "ncm": "09011110",
+              "quantidade_solicitada": 1,
+              "somente_novas": false
+            },
+            "exclusoes": {
+              "informadas": [
+                "Argentina"
+              ],
+              "iso3_reconhecidos": [
+                "ARG"
+              ],
+              "nao_reconhecidas": []
+            },
+            "metodologia": {
+              "exclusao_antes_da_ordenacao": true,
+              "fonte": "base completa HS6 + pais",
+              "ordenacao": [
+                "score_exportai desc"
+              ],
+              "pais_excluido_reintroduzido": false,
+              "ranking_personalizado_recalculado": true
+            },
+            "recomendacoes": [
+              {
+                "HS6": "090111",
+                "ISO3": "CHN",
+                "faixa_confianca": "ALTA",
+                "indice_cobertura": 85,
+                "pais": "China",
+                "ranking_global_no_hs6": 2,
+                "ranking_personalizado": 1,
+                "score_exportai": 56.41,
+                "tipo_oportunidade": "MERCADO_ATUAL_COM_WITS"
+              }
+            ]
+          }
+        ]
+      },
+      "CriarDiagnosticoRequest": {
+        "properties": {
+          "produto": {
+            "$ref": "#/components/schemas/ProdutoDiagnostico"
+          },
+          "mercados_basico": {
+            "items": {
+              "$ref": "#/components/schemas/MercadoBasico"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Mercados Basico"
+          },
+          "mercados_escolhidos": {
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "Mercados Escolhidos"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "produto",
+          "mercados_basico",
+          "mercados_escolhidos"
+        ],
+        "title": "CriarDiagnosticoRequest"
+      },
+      "CriarHandoffRequest": {
+        "properties": {
+          "destino": {
+            "type": "string",
+            "title": "Destino"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "destino"
+        ],
+        "title": "CriarHandoffRequest"
+      },
+      "CriarJornadaRequest": {
+        "properties": {
+          "produto": {
+            "$ref": "#/components/schemas/ProdutoJornada"
+          },
+          "mercados_basico": {
+            "items": {
+              "$ref": "#/components/schemas/MercadoJornada"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Mercados Basico"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "produto",
+          "mercados_basico"
+        ],
+        "title": "CriarJornadaRequest"
+      },
+      "CriarJornadaResponse": {
+        "properties": {
+          "journey_id": {
+            "type": "string",
+            "title": "Journey Id"
+          },
+          "resume_token": {
+            "type": "string",
+            "title": "Resume Token"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "expira_em": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Expira Em"
+          }
+        },
+        "type": "object",
+        "required": [
+          "journey_id",
+          "resume_token",
+          "status",
+          "expira_em"
+        ],
+        "title": "CriarJornadaResponse"
+      },
+      "DocumentoRecuperado": {
+        "properties": {
+          "fonte_codigo": {
+            "type": "string",
+            "title": "Fonte Codigo"
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
+            "title": "Url"
+          },
+          "titulo": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 3,
+            "title": "Titulo"
+          },
+          "texto": {
+            "type": "string",
+            "maxLength": 100000,
+            "minLength": 10,
+            "title": "Texto"
+          },
+          "consultado_em": {
+            "type": "string",
+            "format": "date",
+            "title": "Consultado Em"
+          },
+          "idioma": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idioma"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fonte_codigo",
+          "url",
+          "titulo",
+          "texto",
+          "consultado_em"
+        ],
+        "title": "DocumentoRecuperado"
+      },
+      "DocumentosPorPais": {
+        "properties": {
+          "pais_iso3": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "title": "Pais Iso3"
+          },
+          "documentos": {
+            "items": {
+              "$ref": "#/components/schemas/DocumentoRecuperado"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Documentos"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "pais_iso3"
+        ],
+        "title": "DocumentosPorPais"
+      },
+      "ErroDetalhe": {
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "title": "Codigo"
+          },
+          "mensagem": {
+            "type": "string",
+            "title": "Mensagem"
+          },
+          "detalhes": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detalhes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "codigo",
+          "mensagem"
+        ],
+        "title": "ErroDetalhe"
+      },
+      "ErroResponse": {
+        "properties": {
+          "erro": {
+            "$ref": "#/components/schemas/ErroDetalhe"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "erro"
+        ],
+        "title": "ErroResponse"
+      },
+      "EstatisticaBuscaPais": {
+        "properties": {
+          "pais_iso3": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "title": "Pais Iso3"
+          },
+          "consultas_executadas": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Consultas Executadas"
+          },
+          "urls_encontradas": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Urls Encontradas"
+          },
+          "documentos_baixados": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Documentos Baixados"
+          },
+          "falhas": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Falhas"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "pais_iso3",
+          "consultas_executadas",
+          "urls_encontradas",
+          "documentos_baixados"
+        ],
+        "title": "EstatisticaBuscaPais"
+      },
+      "ExclusoesInfo": {
+        "properties": {
+          "informadas": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Informadas"
+          },
+          "iso3_reconhecidos": {
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            },
+            "type": "array",
+            "title": "Iso3 Reconhecidos"
+          },
+          "nao_reconhecidas": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Nao Reconhecidas"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "informadas",
+          "iso3_reconhecidos",
+          "nao_reconhecidas"
+        ],
+        "title": "ExclusoesInfo"
+      },
+      "ExecutarPesquisaAssistidaRequest": {
+        "properties": {
+          "documentos_por_pais": {
+            "items": {
+              "$ref": "#/components/schemas/DocumentosPorPais"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "title": "Documentos Por Pais"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "ExecutarPesquisaAssistidaRequest"
+      },
+      "ExecutarPesquisaAutomaticaRequest": {
+        "properties": {
+          "incluir_documentos_manuais": {
+            "type": "boolean",
+            "title": "Incluir Documentos Manuais",
+            "default": true
+          },
+          "maximo_resultados_por_consulta": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 1.0,
+            "title": "Maximo Resultados Por Consulta",
+            "default": 3
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "ExecutarPesquisaAutomaticaRequest"
+      },
+      "HS6InfoResponse": {
+        "properties": {
+          "hs6": {
+            "type": "string",
+            "pattern": "^\\d{6}$",
+            "title": "Hs6"
+          },
+          "quantidade_ncm_bridge": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Quantidade Ncm Bridge"
+          },
+          "ncm_exemplo": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ncm Exemplo"
+          },
+          "descricoes_disponiveis": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Descricoes Disponiveis"
+          },
+          "paises_avaliados": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Paises Avaliados"
+          },
+          "score_minimo": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score Minimo"
+          },
+          "score_mediano": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score Mediano"
+          },
+          "score_maximo": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score Maximo"
+          },
+          "tem_ncm_na_bridge": {
+            "type": "boolean",
+            "title": "Tem Ncm Na Bridge"
+          },
+          "tem_score_exportai": {
+            "type": "boolean",
+            "title": "Tem Score Exportai"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "hs6",
+          "quantidade_ncm_bridge",
+          "descricoes_disponiveis",
+          "paises_avaliados",
+          "tem_ncm_na_bridge",
+          "tem_score_exportai"
+        ],
+        "title": "HS6InfoResponse"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ItemChecklist": {
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "pattern": "^[A-Z0-9_]+$",
+            "title": "Codigo"
+          },
+          "versao": {
+            "type": "string",
+            "title": "Versao"
+          },
+          "dimensao": {
+            "type": "string",
+            "pattern": "^[A-Z0-9_]+$",
+            "title": "Dimensao"
+          },
+          "ordem": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Ordem"
+          },
+          "pergunta": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 5,
+            "title": "Pergunta"
+          },
+          "explicacao": {
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 5,
+            "title": "Explicacao"
+          },
+          "criticidade": {
+            "type": "string",
+            "enum": [
+              "BLOQUEADOR",
+              "ESSENCIAL",
+              "RECOMENDADO"
+            ],
+            "title": "Criticidade"
+          },
+          "peso": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Peso"
+          },
+          "aplicabilidade": {
+            "type": "string",
+            "title": "Aplicabilidade"
+          },
+          "ativo": {
+            "type": "boolean",
+            "title": "Ativo"
+          },
+          "acao_quando_pendente": {
+            "$ref": "#/components/schemas/AcaoPendente"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "codigo",
+          "versao",
+          "dimensao",
+          "ordem",
+          "pergunta",
+          "explicacao",
+          "criticidade",
+          "peso",
+          "aplicabilidade",
+          "ativo",
+          "acao_quando_pendente"
+        ],
+        "title": "ItemChecklist"
+      },
+      "JornadaPublica": {
+        "properties": {
+          "journey_id": {
+            "type": "string",
+            "title": "Journey Id"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "produto": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Produto"
+          },
+          "mercados_basico": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Mercados Basico"
+          },
+          "mercados_escolhidos": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Mercados Escolhidos"
+          },
+          "diagnostico_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Diagnostico Id"
+          },
+          "criado_em": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Criado Em"
+          },
+          "atualizado_em": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Atualizado Em"
+          },
+          "ultimo_acesso_em": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ultimo Acesso Em"
+          },
+          "expira_em": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Expira Em"
+          }
+        },
+        "type": "object",
+        "required": [
+          "journey_id",
+          "status",
+          "produto",
+          "mercados_basico",
+          "mercados_escolhidos",
+          "diagnostico_id",
+          "criado_em",
+          "atualizado_em",
+          "ultimo_acesso_em",
+          "expira_em"
+        ],
+        "title": "JornadaPublica"
+      },
+      "ListaPaisesResponse": {
+        "properties": {
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "paises": {
+            "items": {
+              "$ref": "#/components/schemas/PaisCatalogo"
+            },
+            "type": "array",
+            "title": "Paises"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "total",
+          "paises"
+        ],
+        "title": "ListaPaisesResponse"
+      },
+      "MercadoBasico": {
+        "properties": {
+          "iso3": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "title": "Iso3"
+          },
+          "nome": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 2,
+            "title": "Nome"
+          },
+          "ranking_personalizado": {
+            "type": "integer",
+            "maximum": 20.0,
+            "minimum": 1.0,
+            "title": "Ranking Personalizado"
+          },
+          "ranking_global_no_hs6": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Ranking Global No Hs6"
+          },
+          "score_exportai": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0,
+            "title": "Score Exportai"
+          },
+          "faixa_confianca": {
+            "type": "string",
+            "enum": [
+              "LIMITADA",
+              "MODERADA",
+              "ALTA"
+            ],
+            "title": "Faixa Confianca"
+          },
+          "tipo_oportunidade": {
+            "type": "string",
+            "enum": [
+              "MERCADO_ATUAL_COM_WITS",
+              "NOVA_OPORTUNIDADE_WITS",
+              "HISTORICO_SEM_WITS"
+            ],
+            "title": "Tipo Oportunidade"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "iso3",
+          "nome",
+          "ranking_personalizado",
+          "ranking_global_no_hs6",
+          "score_exportai",
+          "faixa_confianca",
+          "tipo_oportunidade"
+        ],
+        "title": "MercadoBasico"
+      },
+      "MercadoJornada": {
+        "properties": {
+          "iso3": {
+            "type": "string",
+            "title": "Iso3"
+          },
+          "nome": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 2,
+            "title": "Nome"
+          },
+          "ranking_personalizado": {
+            "type": "integer",
+            "maximum": 20.0,
+            "minimum": 1.0,
+            "title": "Ranking Personalizado"
+          },
+          "ranking_global_no_hs6": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ranking Global No Hs6"
+          },
+          "score_exportai": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0,
+            "title": "Score Exportai"
+          },
+          "faixa_confianca": {
+            "type": "string",
+            "title": "Faixa Confianca"
+          },
+          "tipo_oportunidade": {
+            "type": "string",
+            "title": "Tipo Oportunidade"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "iso3",
+          "nome",
+          "ranking_personalizado",
+          "score_exportai",
+          "faixa_confianca",
+          "tipo_oportunidade"
+        ],
+        "title": "MercadoJornada"
+      },
+      "MercadosAtualizadosResponse": {
+        "properties": {
+          "diagnostico_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Diagnostico Id"
+          },
+          "mercados_escolhidos": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Mercados Escolhidos"
+          },
+          "resultado_invalidado": {
+            "type": "boolean",
+            "title": "Resultado Invalidado"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "diagnostico_id",
+          "mercados_escolhidos",
+          "resultado_invalidado"
+        ],
+        "title": "MercadosAtualizadosResponse"
+      },
+      "MetodologiaInfo": {
+        "properties": {
+          "fonte": {
+            "type": "string",
+            "title": "Fonte"
+          },
+          "exclusao_antes_da_ordenacao": {
+            "type": "boolean",
+            "title": "Exclusao Antes Da Ordenacao"
+          },
+          "ranking_personalizado_recalculado": {
+            "type": "boolean",
+            "title": "Ranking Personalizado Recalculado"
+          },
+          "pais_excluido_reintroduzido": {
+            "type": "boolean",
+            "title": "Pais Excluido Reintroduzido"
+          },
+          "ordenacao": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Ordenacao"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fonte",
+          "exclusao_antes_da_ordenacao",
+          "ranking_personalizado_recalculado",
+          "pais_excluido_reintroduzido",
+          "ordenacao"
+        ],
+        "title": "MetodologiaInfo"
+      },
+      "NCMInfoResponse": {
+        "properties": {
+          "ncm": {
+            "type": "string",
+            "pattern": "^\\d{8}$",
+            "title": "Ncm"
+          },
+          "descricao_ncm": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Descricao Ncm"
+          },
+          "hs6": {
+            "type": "string",
+            "pattern": "^\\d{6}$",
+            "title": "Hs6"
+          },
+          "existe_no_motor": {
+            "type": "boolean",
+            "title": "Existe No Motor"
+          },
+          "paises_avaliados": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Paises Avaliados"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ncm",
+          "hs6",
+          "existe_no_motor",
+          "paises_avaliados"
+        ],
+        "title": "NCMInfoResponse"
+      },
+      "PaisCatalogo": {
+        "properties": {
+          "iso3": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "title": "Iso3"
+          },
+          "nome": {
+            "type": "string",
+            "title": "Nome"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "iso3",
+          "nome"
+        ],
+        "title": "PaisCatalogo"
+      },
+      "PesquisaMercadoResumo": {
+        "properties": {
+          "pais_iso3": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "title": "Pais Iso3"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "NAO_EXECUTADA",
+              "EM_PROCESSAMENTO",
+              "CONCLUIDA",
+              "CONCLUIDA_COM_RESSALVAS",
+              "INDISPONIVEL",
+              "ERRO"
+            ],
+            "title": "Status",
+            "default": "NAO_EXECUTADA"
+          },
+          "requisitos_confirmados": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Requisitos Confirmados",
+            "default": 0
+          },
+          "requisitos_com_ressalvas": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Requisitos Com Ressalvas",
+            "default": 0
+          },
+          "nao_confirmados": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Nao Confirmados",
+            "default": 0
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "pais_iso3"
+        ],
+        "title": "PesquisaMercadoResumo"
+      },
+      "PesquisaPaisResultado": {
+        "properties": {
+          "pais_iso3": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "title": "Pais Iso3"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CONCLUIDA",
+              "CONCLUIDA_COM_RESSALVAS",
+              "INDISPONIVEL",
+              "ERRO"
+            ],
+            "title": "Status"
+          },
+          "evidencias_encontradas": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Evidencias Encontradas"
+          },
+          "descartes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Descartes"
+          },
+          "analise": {
+            "$ref": "#/components/schemas/SaidaInteligenciaMercado"
+          },
+          "erro": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Erro"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "pais_iso3",
+          "status",
+          "evidencias_encontradas",
+          "descartes",
+          "analise"
+        ],
+        "title": "PesquisaPaisResultado"
+      },
+      "PrepararDiagnosticoResponse": {
+        "properties": {
+          "journey_id": {
+            "type": "string",
+            "title": "Journey Id"
+          },
+          "diagnostico_payload": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Diagnostico Payload"
+          },
+          "status": {
+            "type": "string",
+            "const": "PRONTA_PARA_DIAGNOSTICO",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "journey_id",
+          "diagnostico_payload",
+          "status"
+        ],
+        "title": "PrepararDiagnosticoResponse"
+      },
+      "ProdutoDiagnostico": {
+        "properties": {
+          "ncm": {
+            "type": "string",
+            "pattern": "^\\d{8}$",
+            "title": "Ncm"
+          },
+          "hs6": {
+            "type": "string",
+            "pattern": "^\\d{6}$",
+            "title": "Hs6"
+          },
+          "descricao": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 3,
+            "title": "Descricao"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ncm",
+          "hs6",
+          "descricao"
+        ],
+        "title": "ProdutoDiagnostico"
+      },
+      "ProdutoJornada": {
+        "properties": {
+          "ncm": {
+            "type": "string",
+            "title": "Ncm"
+          },
+          "hs6": {
+            "type": "string",
+            "title": "Hs6"
+          },
+          "descricao": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 3,
+            "title": "Descricao"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ncm",
+          "hs6",
+          "descricao"
+        ],
+        "title": "ProdutoJornada"
+      },
+      "RecomendacaoPais": {
+        "properties": {
+          "ranking_personalizado": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Ranking Personalizado"
+          },
+          "ranking_global_no_hs6": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Ranking Global No Hs6"
+          },
+          "HS6": {
+            "type": "string",
+            "pattern": "^\\d{6}$",
+            "title": "Hs6"
+          },
+          "ISO3": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "title": "Iso3"
+          },
+          "pais": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pais"
+          },
+          "score_exportai": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0,
+            "title": "Score Exportai"
+          },
+          "indice_cobertura": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0,
+            "title": "Indice Cobertura"
+          },
+          "faixa_confianca": {
+            "type": "string",
+            "enum": [
+              "LIMITADA",
+              "MODERADA",
+              "ALTA"
+            ],
+            "title": "Faixa Confianca"
+          },
+          "tipo_oportunidade": {
+            "type": "string",
+            "enum": [
+              "MERCADO_ATUAL_COM_WITS",
+              "NOVA_OPORTUNIDADE_WITS",
+              "HISTORICO_SEM_WITS"
+            ],
+            "title": "Tipo Oportunidade"
+          },
+          "motivo_recomendacao": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Motivo Recomendacao"
+          },
+          "aviso_confianca": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Aviso Confianca"
+          },
+          "score_comex_usado": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score Comex Usado"
+          },
+          "score_wits_usado": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score Wits Usado"
+          },
+          "score_economico_usado": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score Economico Usado"
+          },
+          "score_futuro_usado": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score Futuro Usado"
+          },
+          "score_acordo_usado": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score Acordo Usado"
+          },
+          "comex_imputado": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comex Imputado"
+          },
+          "wits_imputado": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Wits Imputado"
+          },
+          "acordo_neutro": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Acordo Neutro"
+          },
+          "VL_FOB": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vl Fob"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ranking_personalizado",
+          "ranking_global_no_hs6",
+          "HS6",
+          "ISO3",
+          "score_exportai",
+          "indice_cobertura",
+          "faixa_confianca",
+          "tipo_oportunidade"
+        ],
+        "title": "RecomendacaoPais"
+      },
+      "RegistrarRespostasRequest": {
+        "properties": {
+          "catalogo_versao": {
+            "type": "string",
+            "title": "Catalogo Versao"
+          },
+          "respostas": {
+            "items": {
+              "$ref": "#/components/schemas/RespostaChecklist"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Respostas"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "catalogo_versao",
+          "respostas"
+        ],
+        "title": "RegistrarRespostasRequest"
+      },
+      "RequisitoMercado": {
+        "properties": {
+          "categoria": {
+            "type": "string",
+            "enum": [
+              "CERTIFICACOES",
+              "LICENCAS",
+              "ROTULAGEM",
+              "EMBALAGEM",
+              "DOCUMENTACAO",
+              "RESTRICOES",
+              "AUTORIDADES",
+              "OUTROS"
+            ],
+            "title": "Categoria"
+          },
+          "titulo": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 3,
+            "title": "Titulo"
+          },
+          "descricao": {
+            "type": "string",
+            "maxLength": 3000,
+            "minLength": 10,
+            "title": "Descricao"
+          },
+          "obrigatoriedade": {
+            "type": "string",
+            "enum": [
+              "OBRIGATORIO",
+              "POSSIVELMENTE_OBRIGATORIO",
+              "VOLUNTARIO",
+              "NAO_DETERMINADO"
+            ],
+            "title": "Obrigatoriedade"
+          },
+          "status_evidencia": {
+            "type": "string",
+            "enum": [
+              "CONFIRMADO_EM_FONTE_OFICIAL",
+              "ENCONTRADO_EM_FONTE_COMPLEMENTAR",
+              "NAO_CONFIRMADO"
+            ],
+            "title": "Status Evidencia"
+          },
+          "aplicabilidade": {
+            "type": "string",
+            "enum": [
+              "APLICAVEL",
+              "POSSIVELMENTE_APLICAVEL",
+              "NAO_DETERMINADA"
+            ],
+            "title": "Aplicabilidade"
+          },
+          "autoridade": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 500
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Autoridade"
+          },
+          "fontes_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 10,
+            "minItems": 1,
+            "title": "Fontes Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "categoria",
+          "titulo",
+          "descricao",
+          "obrigatoriedade",
+          "status_evidencia",
+          "aplicabilidade",
+          "fontes_ids"
+        ],
+        "title": "RequisitoMercado"
+      },
+      "RespostaChecklist": {
+        "properties": {
+          "item_codigo": {
+            "type": "string",
+            "pattern": "^[A-Z0-9_]+$",
+            "title": "Item Codigo"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CONCLUIDO",
+              "EM_ANDAMENTO",
+              "NAO_INICIADO",
+              "NAO_SEI",
+              "NAO_SE_APLICA"
+            ],
+            "title": "Status"
+          },
+          "observacao": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Observacao"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "item_codigo",
+          "status"
+        ],
+        "title": "RespostaChecklist"
+      },
+      "RespostasRegistradasResponse": {
+        "properties": {
+          "diagnostico_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Diagnostico Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CRIADO",
+              "EM_PREENCHIMENTO",
+              "PRONTO_PARA_CALCULAR",
+              "CALCULADO"
+            ],
+            "title": "Status"
+          },
+          "respostas_registradas": {
+            "type": "integer",
+            "title": "Respostas Registradas"
+          },
+          "total_itens_ativos": {
+            "type": "integer",
+            "title": "Total Itens Ativos"
+          },
+          "faltam_responder": {
+            "type": "integer",
+            "title": "Faltam Responder"
+          },
+          "resultado_invalidado": {
+            "type": "boolean",
+            "title": "Resultado Invalidado"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "diagnostico_id",
+          "status",
+          "respostas_registradas",
+          "total_itens_ativos",
+          "faltam_responder",
+          "resultado_invalidado"
+        ],
+        "title": "RespostasRegistradasResponse"
+      },
+      "ResultadoDiagnostico": {
+        "properties": {
+          "catalogo_versao": {
+            "type": "string",
+            "title": "Catalogo Versao"
+          },
+          "score_geral": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0,
+            "title": "Score Geral"
+          },
+          "nivel": {
+            "type": "string",
+            "enum": [
+              "INICIAL",
+              "EM_PREPARACAO",
+              "QUASE_PRONTA",
+              "PRONTA_PARA_PROSPECTAR"
+            ],
+            "title": "Nivel"
+          },
+          "scores_dimensoes": {
+            "items": {
+              "$ref": "#/components/schemas/ScoreDimensao"
+            },
+            "type": "array",
+            "title": "Scores Dimensoes"
+          },
+          "possui_bloqueadores": {
+            "type": "boolean",
+            "title": "Possui Bloqueadores"
+          },
+          "bloqueadores": {
+            "items": {
+              "$ref": "#/components/schemas/BloqueadorDiagnostico"
+            },
+            "type": "array",
+            "title": "Bloqueadores"
+          },
+          "plano_acao": {
+            "items": {
+              "$ref": "#/components/schemas/AcaoPlano"
+            },
+            "type": "array",
+            "title": "Plano Acao"
+          },
+          "pesquisas_mercado": {
+            "items": {
+              "$ref": "#/components/schemas/PesquisaMercadoResumo"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "title": "Pesquisas Mercado"
+          },
+          "alerta_vendas": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Alerta Vendas"
+          },
+          "bloqueia_modulo_vendas": {
+            "type": "boolean",
+            "const": false,
+            "title": "Bloqueia Modulo Vendas",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "catalogo_versao",
+          "score_geral",
+          "nivel",
+          "scores_dimensoes",
+          "possui_bloqueadores",
+          "bloqueadores",
+          "plano_acao",
+          "pesquisas_mercado"
+        ],
+        "title": "ResultadoDiagnostico"
+      },
+      "ResultadoPesquisaAssistida": {
+        "properties": {
+          "diagnostico_id": {
+            "type": "string",
+            "title": "Diagnostico Id"
+          },
+          "provedor": {
+            "type": "string",
+            "title": "Provedor"
+          },
+          "paises_solicitados": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": 1.0,
+            "title": "Paises Solicitados"
+          },
+          "paises_concluidos": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": 0.0,
+            "title": "Paises Concluidos"
+          },
+          "paises_com_erro": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": 0.0,
+            "title": "Paises Com Erro"
+          },
+          "resultados": {
+            "items": {
+              "$ref": "#/components/schemas/PesquisaPaisResultado"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "Resultados"
+          },
+          "score_geral_antes": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score Geral Antes"
+          },
+          "score_geral_depois": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score Geral Depois"
+          },
+          "pontuacao_preservada": {
+            "type": "boolean",
+            "title": "Pontuacao Preservada"
+          },
+          "executado_em": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Executado Em"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "diagnostico_id",
+          "provedor",
+          "paises_solicitados",
+          "paises_concluidos",
+          "paises_com_erro",
+          "resultados",
+          "pontuacao_preservada",
+          "executado_em"
+        ],
+        "title": "ResultadoPesquisaAssistida"
+      },
+      "ResultadoPesquisaAutomatica": {
+        "properties": {
+          "busca_provedor": {
+            "type": "string",
+            "title": "Busca Provedor"
+          },
+          "estatisticas": {
+            "items": {
+              "$ref": "#/components/schemas/EstatisticaBuscaPais"
+            },
+            "type": "array",
+            "title": "Estatisticas"
+          },
+          "pesquisa": {
+            "$ref": "#/components/schemas/ResultadoPesquisaAssistida"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "busca_provedor",
+          "estatisticas",
+          "pesquisa"
+        ],
+        "title": "ResultadoPesquisaAutomatica"
+      },
+      "SaidaInteligenciaMercado": {
+        "properties": {
+          "pais_iso3": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "title": "Pais Iso3"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CONCLUIDA",
+              "CONCLUIDA_COM_RESSALVAS",
+              "INDISPONIVEL",
+              "ERRO"
+            ],
+            "title": "Status"
+          },
+          "resumo": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 3,
+            "title": "Resumo"
+          },
+          "requisitos": {
+            "items": {
+              "$ref": "#/components/schemas/RequisitoMercado"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Requisitos"
+          },
+          "nao_confirmados": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Nao Confirmados"
+          },
+          "alertas": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Alertas"
+          },
+          "evidencias_disponiveis": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Evidencias Disponiveis"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "pais_iso3",
+          "status",
+          "resumo"
+        ],
+        "title": "SaidaInteligenciaMercado"
+      },
+      "SaudeComplementar": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "OK",
+              "PARCIAL",
+              "INDISPONIVEL"
+            ],
+            "title": "Status"
+          },
+          "componentes": {
+            "items": {
+              "$ref": "#/components/schemas/ComponenteSaude"
+            },
+            "type": "array",
+            "title": "Componentes"
+          },
+          "verificado_em": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Verificado Em"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "componentes",
+          "verificado_em"
+        ],
+        "title": "SaudeComplementar"
+      },
+      "ScoreDimensao": {
+        "properties": {
+          "dimensao": {
+            "type": "string",
+            "title": "Dimensao"
+          },
+          "score": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0,
+            "title": "Score"
+          },
+          "itens_aplicaveis": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Itens Aplicaveis"
+          },
+          "itens_concluidos": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Itens Concluidos"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "dimensao",
+          "score",
+          "itens_aplicaveis",
+          "itens_concluidos"
+        ],
+        "title": "ScoreDimensao"
+      },
+      "SelecionarMercadosRequest": {
+        "properties": {
+          "mercados_escolhidos": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "Mercados Escolhidos"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mercados_escolhidos"
+        ],
+        "title": "SelecionarMercadosRequest"
+      },
+      "SessaoCriadaResponse": {
+        "properties": {
+          "diagnostico_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Diagnostico Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CRIADO",
+              "EM_PREENCHIMENTO",
+              "PRONTO_PARA_CALCULAR",
+              "CALCULADO"
+            ],
+            "title": "Status"
+          },
+          "catalogo_versao": {
+            "type": "string",
+            "title": "Catalogo Versao"
+          },
+          "criado_em": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Criado Em"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "diagnostico_id",
+          "status",
+          "catalogo_versao",
+          "criado_em"
+        ],
+        "title": "SessaoCriadaResponse"
+      },
+      "SessaoDiagnosticoResponse": {
+        "properties": {
+          "diagnostico_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Diagnostico Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CRIADO",
+              "EM_PREENCHIMENTO",
+              "PRONTO_PARA_CALCULAR",
+              "CALCULADO"
+            ],
+            "title": "Status"
+          },
+          "catalogo_versao": {
+            "type": "string",
+            "title": "Catalogo Versao"
+          },
+          "produto": {
+            "$ref": "#/components/schemas/ProdutoDiagnostico"
+          },
+          "mercados_basico": {
+            "items": {
+              "$ref": "#/components/schemas/MercadoBasico"
+            },
+            "type": "array",
+            "title": "Mercados Basico"
+          },
+          "mercados_escolhidos": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "Mercados Escolhidos"
+          },
+          "respostas": {
+            "items": {
+              "$ref": "#/components/schemas/RespostaChecklist"
+            },
+            "type": "array",
+            "title": "Respostas"
+          },
+          "resultado": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ResultadoDiagnostico"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "pesquisa_assistida": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pesquisa Assistida"
+          },
+          "criado_em": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Criado Em"
+          },
+          "atualizado_em": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Atualizado Em"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "diagnostico_id",
+          "status",
+          "catalogo_versao",
+          "produto",
+          "mercados_basico",
+          "mercados_escolhidos",
+          "respostas",
+          "resultado",
+          "criado_em",
+          "atualizado_em"
+        ],
+        "title": "SessaoDiagnosticoResponse"
+      },
+      "TrocarHandoffRequest": {
+        "properties": {
+          "handoff_code": {
+            "type": "string",
+            "title": "Handoff Code"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "handoff_code"
+        ],
+        "title": "TrocarHandoffRequest"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "HTTPBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

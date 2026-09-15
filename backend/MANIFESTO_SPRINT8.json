@@ -1,0 +1,36 @@
+{
+  "projeto": "ExportAI",
+  "modulo": "Diagnostico",
+  "sprint": 8,
+  "status": "CONCLUIDA",
+  "arquitetura": {
+    "api": "FastAPI",
+    "banco_producao": "PostgreSQL",
+    "migracoes": "Alembic",
+    "diagnostico_principal": "DETERMINISTICO",
+    "pesquisa_regulatoria": "COMPLEMENTAR_E_OPCIONAL"
+  },
+  "migracao_head": "20260911_03",
+  "garantias": [
+    "IA não calcula pontuação, pesos ou criticidades",
+    "Falha da IA não impede o diagnóstico determinístico",
+    "Ausência de evidências não reduz o score",
+    "Acesso ao Módulo Vendas não é bloqueado",
+    "Segredos não pertencem ao frontend"
+  ],
+  "arquivos_fundamentais": [
+    "Dockerfile",
+    ".dockerignore",
+    "docker-compose.yml",
+    ".env.production.example",
+    "start.py",
+    "start.sh",
+    "requirements.txt",
+    "alembic.ini",
+    "docs/openapi-exportai.json",
+    "docs/SPRINT8_MODULO_DIAGNOSTICO.md",
+    "docs/API_DIAGNOSTICO.md",
+    "docs/CONFIGURACAO_COMPLEMENTAR.md",
+    "docs/CHECKLIST_DEMONSTRACAO.md"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "catalogo_versao": "1.0.0",
+  "respostas": [
+    {
+      "item_codigo": "PROD_CAPACIDADE_01",
+      "status": "CONCLUIDO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "PROD_REGULARIDADE_02",
+      "status": "EM_ANDAMENTO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "PROD_QUALIDADE_03",
+      "status": "NAO_INICIADO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "PROD_RESPONSAVEL_04",
+      "status": "NAO_SEI",
+      "observacao": null
+    },
+    {
+      "item_codigo": "CONF_NCM_01",
+      "status": "CONCLUIDO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "CONF_FICHA_02",
+      "status": "EM_ANDAMENTO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "CONF_NACIONAL_03",
+      "status": "NAO_INICIADO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "CONF_DESTINO_04",
+      "status": "NAO_SEI",
+      "observacao": null
+    },
+    {
+      "item_codigo": "CONF_RASTREIO_05",
+      "status": "CONCLUIDO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "EMB_RESISTENCIA_01",
+      "status": "EM_ANDAMENTO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "EMB_MEDIDAS_02",
+      "status": "NAO_INICIADO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "ROT_ADAPTACAO_03",
+      "status": "NAO_SEI",
+      "observacao": null
+    },
+    {
+      "item_codigo": "EMB_CODIGOS_04",
+      "status": "CONCLUIDO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "PRECO_INCOTERM_01",
+      "status": "EM_ANDAMENTO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "PRECO_CUSTOS_02",
+      "status": "NAO_INICIADO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "PRECO_MARGEM_03",
+      "status": "NAO_SEI",
+      "observacao": null
+    },
+    {
+      "item_codigo": "FIN_CAPITAL_04",
+      "status": "CONCLUIDO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "FIN_PAGAMENTO_05",
+      "status": "EM_ANDAMENTO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "OPER_HABILITACAO_01",
+      "status": "NAO_INICIADO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "OPER_DOCUMENTOS_02",
+      "status": "NAO_SEI",
+      "observacao": null
+    },
+    {
+      "item_codigo": "OPER_LOGISTICA_03",
+      "status": "CONCLUIDO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "OPER_SEGURO_04",
+      "status": "EM_ANDAMENTO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "MKT_APRESENTACAO_01",
+      "status": "NAO_INICIADO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "MKT_CATALOGO_02",
+      "status": "NAO_SEI",
+      "observacao": null
+    },
+    {
+      "item_codigo": "MKT_SITE_03",
+      "status": "CONCLUIDO",
+      "observacao": null
+    },
+    {
+      "item_codigo": "MKT_ATENDIMENTO_04",
+      "status": "EM_ANDAMENTO",
+      "observacao": null
+    }
+  ]
+}

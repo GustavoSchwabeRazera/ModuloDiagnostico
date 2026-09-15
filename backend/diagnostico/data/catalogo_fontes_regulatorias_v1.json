@@ -1,0 +1,106 @@
+{
+  "versao": "1.0.0",
+  "politica": {
+    "origem_exportacao": "BRA",
+    "maximo_fontes_por_pais": 8,
+    "maximo_evidencias_por_pais": 50,
+    "maximo_caracteres_por_evidencia": 10000,
+    "somente_https": true,
+    "seguir_subdominios": true,
+    "busca_livre_habilitada": false,
+    "observacao": "O catálogo autoriza fontes; não garante cobertura nem substitui confirmação oficial."
+  },
+  "fontes": [
+    {
+      "codigo": "ITC_MARKET_ACCESS_MAP",
+      "nome": "ITC Market Access Map",
+      "tipo_fonte": "ORGANISMO_INTERNACIONAL",
+      "escopo": "GLOBAL",
+      "paises_iso3": [],
+      "dominios_permitidos": [
+        "intracen.org",
+        "macmap.org"
+      ],
+      "url_inicial": "https://www.intracen.org/resources/tools/market-access-map",
+      "categorias": [
+        "DOCUMENTACAO",
+        "RESTRICOES",
+        "LICENCAS",
+        "CERTIFICACOES"
+      ],
+      "prioridade": 20,
+      "ativo": true
+    },
+    {
+      "codigo": "EPING_SPS_TBT",
+      "nome": "ePing SPS&TBT Platform",
+      "tipo_fonte": "ORGANISMO_INTERNACIONAL",
+      "escopo": "GLOBAL",
+      "paises_iso3": [],
+      "dominios_permitidos": [
+        "epingalert.org",
+        "intracen.org"
+      ],
+      "url_inicial": "https://epingalert.org/",
+      "categorias": [
+        "RESTRICOES",
+        "CERTIFICACOES",
+        "ROTULAGEM",
+        "EMBALAGEM"
+      ],
+      "prioridade": 30,
+      "ativo": true
+    },
+    {
+      "codigo": "EU_ACCESS2MARKETS",
+      "nome": "EU Access2Markets",
+      "tipo_fonte": "OFICIAL",
+      "escopo": "UNIAO_EUROPEIA",
+      "paises_iso3": [
+        "AUT",
+        "BEL",
+        "BGR",
+        "HRV",
+        "CYP",
+        "CZE",
+        "DNK",
+        "EST",
+        "FIN",
+        "FRA",
+        "DEU",
+        "GRC",
+        "HUN",
+        "IRL",
+        "ITA",
+        "LVA",
+        "LTU",
+        "LUX",
+        "MLT",
+        "NLD",
+        "POL",
+        "PRT",
+        "ROU",
+        "SVK",
+        "SVN",
+        "ESP",
+        "SWE"
+      ],
+      "dominios_permitidos": [
+        "trade.ec.europa.eu",
+        "europa.eu"
+      ],
+      "url_inicial": "https://trade.ec.europa.eu/access-to-markets/en/content/",
+      "categorias": [
+        "CERTIFICACOES",
+        "LICENCAS",
+        "ROTULAGEM",
+        "EMBALAGEM",
+        "DOCUMENTACAO",
+        "RESTRICOES",
+        "AUTORIDADES"
+      ],
+      "prioridade": 10,
+      "ativo": true
+    }
+  ]
+}

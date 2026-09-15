@@ -1,0 +1,22 @@
+# Ambientes locais, caches e relatórios
+backend/.venv/
+backend/venv/
+**/__pycache__/
+**/.pytest_cache/
+*.py[cod]
+.coverage
+htmlcov/
+
+# Configuração e dados locais sensíveis
+.env
+.env.*
+!.env.example
+!.env.production.example
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# Backups locais
+*.bak
+*.pre_*

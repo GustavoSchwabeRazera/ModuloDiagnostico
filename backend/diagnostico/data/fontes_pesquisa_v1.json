@@ -1,0 +1,33 @@
+{
+  "versao": "1.0.0",
+  "recurso_mvp": "PESQUISA_ASSISTIDA_BETA",
+  "habilitado_por_padrao": false,
+  "categorias": [
+    "CERTIFICACOES",
+    "LICENCAS",
+    "ROTULAGEM",
+    "EMBALAGEM",
+    "DOCUMENTACAO",
+    "RESTRICOES",
+    "AUTORIDADES"
+  ],
+  "status_evidencia": [
+    "CONFIRMADO_EM_FONTE_OFICIAL",
+    "ENCONTRADO_EM_FONTE_COMPLEMENTAR",
+    "NAO_CONFIRMADO"
+  ],
+  "aplicabilidade": [
+    "APLICAVEL",
+    "POSSIVELMENTE_APLICAVEL",
+    "NAO_DETERMINADA"
+  ],
+  "provedores_ia": [
+    "DESATIVADO",
+    "OLLAMA",
+    "PROVEDOR_FUTURO"
+  ],
+  "limite_paises_por_sessao": 3,
+  "exigir_url_fonte": true,
+  "exigir_data_consulta": true,
+  "aviso": "Informações orientativas. Confirme requisitos com a autoridade competente ou especialista."
+}

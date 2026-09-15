@@ -1,0 +1,22 @@
+{
+  "catalogo_versao": "1.0.0",
+  "score_geral": 62.5,
+  "nivel": "EM_PREPARACAO",
+  "possui_bloqueadores": true,
+  "bloqueadores": [
+    {
+      "codigo": "CONF_DESTINO_04",
+      "status": "NAO_SEI",
+      "mensagem": "As exigências do destino ainda não foram confirmadas."
+    }
+  ],
+  "alerta_vendas": "Há pendências importantes no diagnóstico. Isso não impede o acesso ao Módulo Vendas.",
+  "pesquisa_assistida": {
+    "status": "NAO_EXECUTADA",
+    "mercados": [
+      "CHN",
+      "DEU",
+      "ITA"
+    ]
+  }
+}

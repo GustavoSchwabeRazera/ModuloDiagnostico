@@ -1,0 +1,41 @@
+{
+  "produto": {
+    "ncm": "09011110",
+    "hs6": "090111",
+    "descricao": "Café não torrado, não descafeinado, em grão"
+  },
+  "mercados_basico": [
+    {
+      "iso3": "CHN",
+      "nome": "China",
+      "ranking_personalizado": 1,
+      "ranking_global_no_hs6": 2,
+      "score_exportai": 56.41,
+      "faixa_confianca": "ALTA",
+      "tipo_oportunidade": "MERCADO_ATUAL_COM_WITS"
+    },
+    {
+      "iso3": "DEU",
+      "nome": "Alemanha",
+      "ranking_personalizado": 2,
+      "ranking_global_no_hs6": 3,
+      "score_exportai": 56.34,
+      "faixa_confianca": "ALTA",
+      "tipo_oportunidade": "MERCADO_ATUAL_COM_WITS"
+    },
+    {
+      "iso3": "ITA",
+      "nome": "Itália",
+      "ranking_personalizado": 3,
+      "ranking_global_no_hs6": 5,
+      "score_exportai": 54.33,
+      "faixa_confianca": "ALTA",
+      "tipo_oportunidade": "MERCADO_ATUAL_COM_WITS"
+    }
+  ],
+  "mercados_escolhidos": [
+    "CHN",
+    "DEU",
+    "ITA"
+  ]
+}

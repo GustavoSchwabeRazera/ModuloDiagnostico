@@ -1,0 +1,35 @@
+{
+  "versao": "1.0.0",
+  "origem": "MODULO_BASICO",
+  "campos_produto": [
+    "ncm",
+    "hs6",
+    "descricao"
+  ],
+  "campos_mercado": [
+    "iso3",
+    "nome",
+    "ranking_personalizado",
+    "ranking_global_no_hs6",
+    "score_exportai",
+    "faixa_confianca",
+    "tipo_oportunidade"
+  ],
+  "regras": {
+    "quantidade_mercados": {
+      "minimo": 1,
+      "maximo": 20
+    },
+    "iso3_unico": true,
+    "ranking_personalizado_unico": true,
+    "score_intervalo": [
+      0,
+      100
+    ],
+    "selecao_diagnostico": {
+      "minimo": 1,
+      "maximo": 3,
+      "somente_mercados_recebidos": true
+    }
+  }
+}

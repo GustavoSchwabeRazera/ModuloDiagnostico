@@ -1,0 +1,1 @@
+Migrações do PostgreSQL/SQLite do ExportAI. Execute `alembic upgrade head` antes de iniciar a API em produção.
