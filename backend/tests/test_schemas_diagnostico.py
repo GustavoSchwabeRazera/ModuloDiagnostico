@@ -50,6 +50,14 @@ def test_ncm_pontuada_e_normalizada():
     assert entrada.produto.ncm == "09011110"
 
 
+def test_hs6_sem_ncm_e_aceito():
+    dados = entrada_exemplo()
+    dados["produto"].pop("ncm")
+    entrada = CriarDiagnosticoRequest.model_validate(dados)
+    assert entrada.produto.ncm is None
+    assert entrada.produto.hs6 == "090111"
+
+
 def test_hs6_incompativel_com_ncm_rejeitado():
     dados = entrada_exemplo()
     dados["produto"]["hs6"] = "850440"

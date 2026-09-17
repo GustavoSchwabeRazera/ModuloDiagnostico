@@ -54,13 +54,13 @@ class InteligenciaSchema(BaseModel):
 
 
 class ProdutoPesquisa(InteligenciaSchema):
-    ncm: NCM
+    ncm: NCM | None = None
     hs6: HS6
     descricao: str = Field(min_length=3, max_length=1000)
 
     @model_validator(mode="after")
     def validar_ncm_hs6(self):
-        if not self.ncm.startswith(self.hs6):
+        if self.ncm is not None and not self.ncm.startswith(self.hs6):
             raise ValueError("O HS6 deve corresponder aos seis primeiros dígitos da NCM.")
         return self
 

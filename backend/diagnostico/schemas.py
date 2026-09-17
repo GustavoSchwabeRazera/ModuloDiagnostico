@@ -58,18 +58,20 @@ class DiagnosticoSchema(BaseModel):
 
 
 class ProdutoDiagnostico(DiagnosticoSchema):
-    ncm: NCM
+    ncm: NCM | None = None
     hs6: HS6
     descricao: str = Field(min_length=3, max_length=1000)
 
     @field_validator("ncm", "hs6", mode="before")
     @classmethod
     def manter_apenas_digitos(cls, valor):
+        if valor is None:
+            return None
         return "".join(caractere for caractere in str(valor) if caractere.isdigit())
 
     @model_validator(mode="after")
     def validar_compatibilidade_ncm_hs6(self):
-        if not self.ncm.startswith(self.hs6):
+        if self.ncm is not None and not self.ncm.startswith(self.hs6):
             raise ValueError("O HS6 deve corresponder aos seis primeiros dígitos da NCM.")
         return self
 

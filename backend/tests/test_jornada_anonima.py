@@ -74,6 +74,17 @@ def test_payload_do_diagnostico_preserva_contexto():
     assert result["mercados_escolhidos"] == ["DEU"]
 
 
+def test_jornada_por_hs6_sem_ncm_preserva_contexto():
+    service, _ = service_and_repo()
+    produto, mercados = payload()
+    produto.pop("ncm")
+    data, _ = service.criar({**produto, "ncm": None}, mercados)
+    data = service.selecionar_mercados(data, ["DEU"])
+    result = service.diagnostic_payload(data)
+    assert result["produto"]["ncm"] is None
+    assert result["produto"]["hs6"] == "090111"
+
+
 def test_jornada_expirada_e_rejeitada():
     service, repo = service_and_repo()
     produto, mercados = payload()

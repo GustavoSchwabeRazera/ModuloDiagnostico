@@ -212,9 +212,9 @@
     "/api/v1/diagnosticos/complementar/saude": {
       "get": {
         "tags": [
-          "Diagn�stico"
+          "Diagnóstico"
         ],
-        "summary": "Verifica a sa�de da camada complementar",
+        "summary": "Verifica a saúde da camada complementar",
         "operationId": "saude_camadas_complementares_api_v1_diagnosticos_complementar_saude_get",
         "responses": {
           "200": {
@@ -233,9 +233,9 @@
     "/api/v1/diagnosticos/checklist": {
       "get": {
         "tags": [
-          "Diagn�stico"
+          "Diagnóstico"
         ],
-        "summary": "Consulta o checklist do M�dulo Diagn�stico",
+        "summary": "Consulta o checklist do Módulo Diagnóstico",
         "operationId": "consultar_checklist_api_v1_diagnosticos_checklist_get",
         "responses": {
           "200": {
@@ -254,9 +254,9 @@
     "/api/v1/diagnosticos": {
       "post": {
         "tags": [
-          "Diagn�stico"
+          "Diagnóstico"
         ],
-        "summary": "Cria uma sess�o de diagn�stico",
+        "summary": "Cria uma sessão de diagnóstico",
         "operationId": "criar_diagnostico_api_v1_diagnosticos_post",
         "requestBody": {
           "content": {
@@ -295,9 +295,9 @@
     "/api/v1/diagnosticos/{diagnostico_id}": {
       "get": {
         "tags": [
-          "Diagn�stico"
+          "Diagnóstico"
         ],
-        "summary": "Consulta uma sess�o de diagn�stico",
+        "summary": "Consulta uma sessão de diagnóstico",
         "operationId": "consultar_diagnostico_api_v1_diagnosticos__diagnostico_id__get",
         "parameters": [
           {
@@ -338,9 +338,9 @@
     "/api/v1/diagnosticos/{diagnostico_id}/mercados": {
       "put": {
         "tags": [
-          "Diagn�stico"
+          "Diagnóstico"
         ],
-        "summary": "Atualiza os pa�ses escolhidos",
+        "summary": "Atualiza os países escolhidos",
         "operationId": "atualizar_mercados_api_v1_diagnosticos__diagnostico_id__mercados_put",
         "parameters": [
           {
@@ -391,7 +391,7 @@
     "/api/v1/diagnosticos/{diagnostico_id}/respostas": {
       "put": {
         "tags": [
-          "Diagn�stico"
+          "Diagnóstico"
         ],
         "summary": "Registra respostas parciais ou completas",
         "operationId": "registrar_respostas_api_v1_diagnosticos__diagnostico_id__respostas_put",
@@ -444,9 +444,9 @@
     "/api/v1/diagnosticos/{diagnostico_id}/calcular": {
       "post": {
         "tags": [
-          "Diagn�stico"
+          "Diagnóstico"
         ],
-        "summary": "Calcula o resultado do diagn�stico",
+        "summary": "Calcula o resultado do diagnóstico",
         "operationId": "calcular_diagnostico_api_v1_diagnosticos__diagnostico_id__calcular_post",
         "parameters": [
           {
@@ -487,9 +487,9 @@
     "/api/v1/diagnosticos/{diagnostico_id}/resultado": {
       "get": {
         "tags": [
-          "Diagn�stico"
+          "Diagnóstico"
         ],
-        "summary": "Consulta o �ltimo resultado calculado",
+        "summary": "Consulta o último resultado calculado",
         "operationId": "consultar_resultado_api_v1_diagnosticos__diagnostico_id__resultado_get",
         "parameters": [
           {
@@ -530,9 +530,9 @@
     "/api/v1/diagnosticos/{diagnostico_id}/pesquisa-assistida": {
       "post": {
         "tags": [
-          "Diagn�stico"
+          "Diagnóstico"
         ],
-        "summary": "Executa a interpreta��o complementar por pa�s",
+        "summary": "Executa a interpretação complementar por país",
         "operationId": "executar_pesquisa_assistida_api_v1_diagnosticos__diagnostico_id__pesquisa_assistida_post",
         "parameters": [
           {
@@ -581,9 +581,9 @@
       },
       "get": {
         "tags": [
-          "Diagn�stico"
+          "Diagnóstico"
         ],
-        "summary": "Consulta a �ltima pesquisa assistida",
+        "summary": "Consulta a última pesquisa assistida",
         "operationId": "consultar_pesquisa_assistida_api_v1_diagnosticos__diagnostico_id__pesquisa_assistida_get",
         "parameters": [
           {
@@ -624,9 +624,9 @@
     "/api/v1/diagnosticos/{diagnostico_id}/pesquisa-assistida/automatica": {
       "post": {
         "tags": [
-          "Diagn�stico"
+          "Diagnóstico"
         ],
-        "summary": "Busca fontes autorizadas e executa interpreta��o complementar",
+        "summary": "Busca fontes autorizadas e executa interpretação complementar",
         "operationId": "executar_pesquisa_assistida_automatica_api_v1_diagnosticos__diagnostico_id__pesquisa_assistida_automatica_post",
         "parameters": [
           {
@@ -748,7 +748,7 @@
     "/api/v1/jornadas": {
       "post": {
         "tags": [
-          "Jornadas an�nimas"
+          "Jornadas anônimas"
         ],
         "summary": "Criar Jornada",
         "operationId": "criar_jornada_api_v1_jornadas_post",
@@ -789,7 +789,7 @@
     "/api/v1/jornadas/{journey_id}": {
       "get": {
         "tags": [
-          "Jornadas an�nimas"
+          "Jornadas anônimas"
         ],
         "summary": "Obter Jornada",
         "operationId": "obter_jornada_api_v1_jornadas__journey_id__get",
@@ -836,7 +836,7 @@
     "/api/v1/jornadas/{journey_id}/mercados": {
       "put": {
         "tags": [
-          "Jornadas an�nimas"
+          "Jornadas anônimas"
         ],
         "summary": "Selecionar Mercados",
         "operationId": "selecionar_mercados_api_v1_jornadas__journey_id__mercados_put",
@@ -893,7 +893,7 @@
     "/api/v1/jornadas/{journey_id}/diagnostico-payload": {
       "get": {
         "tags": [
-          "Jornadas an�nimas"
+          "Jornadas anônimas"
         ],
         "summary": "Preparar Diagnostico",
         "operationId": "preparar_diagnostico_api_v1_jornadas__journey_id__diagnostico_payload_get",
@@ -940,7 +940,7 @@
     "/api/v1/jornadas/{journey_id}/diagnostico": {
       "put": {
         "tags": [
-          "Jornadas an�nimas"
+          "Jornadas anônimas"
         ],
         "summary": "Associar Diagnostico",
         "operationId": "associar_diagnostico_api_v1_jornadas__journey_id__diagnostico_put",
@@ -997,7 +997,7 @@
     "/api/v1/jornadas/{journey_id}/handoff": {
       "post": {
         "tags": [
-          "Jornadas an�nimas"
+          "Jornadas anônimas"
         ],
         "summary": "Criar Handoff",
         "operationId": "criar_handoff_api_v1_jornadas__journey_id__handoff_post",
@@ -1052,7 +1052,7 @@
     "/api/v1/jornadas/handoff/trocar": {
       "post": {
         "tags": [
-          "Jornadas an�nimas"
+          "Jornadas anônimas"
         ],
         "summary": "Trocar Handoff",
         "operationId": "trocar_handoff_api_v1_jornadas_handoff_trocar_post",
@@ -2586,8 +2586,15 @@
       "ProdutoDiagnostico": {
         "properties": {
           "ncm": {
-            "type": "string",
-            "pattern": "^\\d{8}$",
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{8}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Ncm"
           },
           "hs6": {
@@ -2605,7 +2612,6 @@
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "ncm",
           "hs6",
           "descricao"
         ],
@@ -2614,7 +2620,14 @@
       "ProdutoJornada": {
         "properties": {
           "ncm": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Ncm"
           },
           "hs6": {
@@ -2631,7 +2644,6 @@
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "ncm",
           "hs6",
           "descricao"
         ],

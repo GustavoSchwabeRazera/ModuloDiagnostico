@@ -9,13 +9,15 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 
 class ProdutoJornada(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    ncm: str
+    ncm: str | None = None
     hs6: str
     descricao: str = Field(min_length=3, max_length=500)
 
-    @field_validator("ncm")
+    @field_validator("ncm", mode="before")
     @classmethod
-    def validar_ncm(cls, value: str) -> str:
+    def validar_ncm(cls, value: str | None) -> str | None:
+        if value is None or not str(value).strip():
+            return None
         value = re.sub(r"\D", "", value)
         if len(value) != 8:
             raise ValueError("NCM deve conter 8 dígitos.")
@@ -31,7 +33,7 @@ class ProdutoJornada(BaseModel):
 
     @model_validator(mode="after")
     def validar_relacao(self):
-        if not self.ncm.startswith(self.hs6):
+        if self.ncm is not None and not self.ncm.startswith(self.hs6):
             raise ValueError("HS6 deve corresponder aos seis primeiros dígitos da NCM.")
         return self
 
