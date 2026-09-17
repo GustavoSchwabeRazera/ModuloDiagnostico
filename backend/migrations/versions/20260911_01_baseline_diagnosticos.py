@@ -21,7 +21,7 @@ def upgrade() -> None:
         return
     op.create_table(
         "diagnosticos",
-        sa.Column("id", sa.String(length=36), primary_key=True),
+        sa.Column("diagnostico_id", sa.String(length=36), primary_key=True),
         sa.Column("status", sa.String(length=40), nullable=False),
         sa.Column("catalogo_versao", sa.String(length=30), nullable=False),
         sa.Column("produto_json", sa.Text(), nullable=False),
