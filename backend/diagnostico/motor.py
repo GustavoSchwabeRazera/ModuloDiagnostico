@@ -88,7 +88,7 @@ class MotorDiagnostico:
         if self.catalogo.versao != self.regras.get("versao"):
             raise CatalogoIncompativelError("Catálogo e regras possuem versões diferentes.")
         fatores = self.regras.get("status_resposta", {})
-        esperados = {"CONCLUIDO", "EM_ANDAMENTO", "NAO_INICIADO", "NAO_SEI", "NAO_SE_APLICA"}
+        esperados = {"CONCLUIDO", "EM_ANDAMENTO", "NAO_INICIADO", "NAO_SEI"}
         if set(fatores) != esperados:
             raise CatalogoIncompativelError("As regras não cobrem todos os status de resposta.")
         pesos = self.regras.get("pesos_criticidade", {})

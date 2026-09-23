@@ -5,8 +5,7 @@
     "CONCLUIDO": 1.0,
     "EM_ANDAMENTO": 0.5,
     "NAO_INICIADO": 0.0,
-    "NAO_SEI": 0.0,
-    "NAO_SE_APLICA": null
+    "NAO_SEI": 0.0
   },
   "pesos_criticidade": {
     "BLOQUEADOR": 5,
@@ -35,7 +34,6 @@
       "maximo_inclusivo": 100
     }
   ],
-  "regra_nao_se_aplica": "Excluir item do numerador e do denominador.",
   "regra_bloqueador": "Item BLOQUEADOR diferente de CONCLUIDO gera alerta impeditivo, mas não bloqueia o acesso ao Módulo Vendas.",
   "ordenacao_plano_acao": [
     "BLOQUEADOR_NAO_INICIADO_OU_NAO_SEI",

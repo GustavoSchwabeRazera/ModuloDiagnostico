@@ -29,7 +29,6 @@ StatusResposta = Literal[
     "EM_ANDAMENTO",
     "NAO_INICIADO",
     "NAO_SEI",
-    "NAO_SE_APLICA",
 ]
 Criticidade = Literal["BLOQUEADOR", "ESSENCIAL", "RECOMENDADO"]
 NivelProntidao = Literal[
@@ -175,6 +174,12 @@ class RespostaChecklist(DiagnosticoSchema):
     item_codigo: str = Field(pattern=r"^[A-Z0-9_]+$")
     status: StatusResposta
     observacao: str | None = Field(default=None, max_length=2000)
+
+    @field_validator("status", mode="before")
+    @classmethod
+    def normalizar_status_legado(cls, value: str) -> str:
+        """Mantém respostas antigas compatíveis após remover NAO_SE_APLICA."""
+        return "NAO_SEI" if value == "NAO_SE_APLICA" else value
 
 
 class RegistrarRespostasRequest(DiagnosticoSchema):

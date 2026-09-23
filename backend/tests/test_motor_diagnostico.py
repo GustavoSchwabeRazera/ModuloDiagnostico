@@ -64,12 +64,12 @@ def test_em_andamento_resulta_em_cinquenta():
     assert resultado.nivel == "EM_PREPARACAO"
 
 
-def test_nao_se_aplica_sai_do_denominador():
+def test_nao_se_aplica_legado_e_normalizado_para_nao_sei():
     dados = payload()
     substituir_status(dados, "OPER_SEGURO_04", "NAO_SE_APLICA", "Seguro dispensado neste cenário.")
     resultado = MotorDiagnostico().calcular(dados)
-    assert resultado.score_geral == 100
-    assert all(x.item_codigo != "OPER_SEGURO_04" for x in resultado.plano_acao)
+    assert resultado.score_geral < 100
+    assert any(x.item_codigo == "OPER_SEGURO_04" for x in resultado.plano_acao)
 
 
 def test_bloqueador_pendente_gera_alerta_sem_bloquear_vendas():
