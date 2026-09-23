@@ -107,9 +107,9 @@ def test_rejeita_ranking_com_lacuna():
         CriarDiagnosticoRequest.model_validate(dados)
 
 
-def test_nao_se_aplica_exige_justificativa():
-    with pytest.raises(ValidationError, match="justificativa"):
-        RespostaChecklist(item_codigo="OPER_SEGURO_04", status="NAO_SE_APLICA")
+def test_nao_se_aplica_pode_ser_salvo_sem_justificativa():
+    resposta = RespostaChecklist(item_codigo="OPER_SEGURO_04", status="NAO_SE_APLICA")
+    assert resposta.observacao is None
 
 
 def test_respostas_nao_podem_repetir_item():

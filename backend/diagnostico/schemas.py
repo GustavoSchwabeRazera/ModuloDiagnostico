@@ -176,12 +176,6 @@ class RespostaChecklist(DiagnosticoSchema):
     status: StatusResposta
     observacao: str | None = Field(default=None, max_length=2000)
 
-    @model_validator(mode="after")
-    def exigir_justificativa_para_nao_se_aplica(self):
-        if self.status == "NAO_SE_APLICA" and not self.observacao:
-            raise ValueError("Informe uma justificativa para NAO_SE_APLICA.")
-        return self
-
 
 class RegistrarRespostasRequest(DiagnosticoSchema):
     catalogo_versao: str

@@ -219,7 +219,7 @@
       "dimensao": "EMBALAGEM_ROTULAGEM",
       "ordem": 4,
       "pergunta": "Códigos, lote, validade e origem estão disponíveis quando aplicáveis?",
-      "explicacao": "Marque NAO_SE_APLICA somente quando houver justificativa.",
+      "explicacao": "Marque NAO_SE_APLICA quando este item não fizer parte da realidade da empresa.",
       "criticidade": "ESSENCIAL",
       "peso": 3,
       "aplicabilidade": "GERAL",
